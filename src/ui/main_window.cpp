@@ -141,8 +141,6 @@ MainWindow::MainWindow(QWidget *parent) :
 			SLOT(onChipsetChange()));
 	update_actions();
 	core().setRtpDir(m_settings.value(RTP_KEY, QString()).toString());
-	if (core().rtpPath("").isEmpty())
-		on_actionDebugRtpPath_triggered();
 	core().setDefDir(m_settings.value(DEFAULT_DIR_KEY,
 										qApp->applicationDirPath()).toString());
 	updateLayerActions();
