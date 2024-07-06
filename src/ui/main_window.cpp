@@ -222,6 +222,7 @@ void MainWindow::LoadProject(QString foldername)
 				info = maps.maps[j];
 				break;
 			}
+		qDebug() << info.parent_map << ":" << info.ID;
 		m_treeItems[info.parent_map]->addChild(m_treeItems[info.ID]);
 		if (info.ID == maps.active_node)
 		{
