@@ -165,6 +165,14 @@ void MapScene::Init()
 	m_view->verticalScrollBar()->setValue(n_mapInfo.scrollbar_y *static_cast<int>(m_scale));
 	m_view->horizontalScrollBar()->setValue(n_mapInfo.scrollbar_x * static_cast<int>(m_scale));
 	core().setCurrentMapEvents(mapEvents());
+
+	for (unsigned int i = 0; i < m_map->events.size(); i++) {
+		const lcf::rpg::Event& ev = m_map->events[i];
+		if (ev.pages.empty())
+			continue;
+		qDebug() << "ev:" << ev.ID << ", name:" << ToQString(ev.name) << ", x:" << ev.x << ", y:" << ev.y;
+	}
+
 	m_init = true;
 	redrawMap();
 }

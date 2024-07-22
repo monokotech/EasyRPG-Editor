@@ -141,8 +141,6 @@ MainWindow::MainWindow(QWidget *parent) :
 			SLOT(onChipsetChange()));
 	update_actions();
 	core().setRtpDir(m_settings.value(RTP_KEY, QString()).toString());
-	if (core().rtpPath("").isEmpty())
-		on_actionDebugRtpPath_triggered();
 	core().setDefDir(m_settings.value(DEFAULT_DIR_KEY,
 										qApp->applicationDirPath()).toString());
 	updateLayerActions();
@@ -224,6 +222,7 @@ void MainWindow::LoadProject(QString foldername)
 				info = maps.maps[j];
 				break;
 			}
+		qDebug() << "map:" << info.ID << "parent:" << info.parent_map << "name:" << ToQString(info.name);
 		m_treeItems[info.parent_map]->addChild(m_treeItems[info.ID]);
 		if (info.ID == maps.active_node)
 		{
